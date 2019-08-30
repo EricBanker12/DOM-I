@@ -50,3 +50,17 @@ for (let link of document.querySelector('nav').children) {
 document.querySelector('.cta-text>h1').innerText = siteContent['cta']['h1']
 document.querySelector('.cta-text>button').innerText = siteContent['cta']['button']
 document.getElementById('cta-img').src = siteContent['cta']['img-src']
+//main-content
+let mainCont = document.querySelector('.main-content')
+i=0
+let categories = ['features','about','services','product','vision']
+for (let header of mainCont.getElementsByTagName('h4')) {
+    header.innerText = siteContent['main-content'][`${categories[i]}-h4`]
+    i++
+}
+i=0
+for (let content of mainCont.getElementsByTagName('p')) {
+    content.innerText = siteContent['main-content'][`${categories[i]}-content`]
+    i++
+}
+document.getElementById('middle-img').src = siteContent['main-content']['middle-img-src']
