@@ -1,5 +1,15 @@
 let timer
 
+document.addEventListener('click', function(event){
+    let button = event.target.closest('button')
+    if (button) {
+        if (button.id == 'start') {
+            startTimer()
+            button.setAttribute('disabled','')
+        }
+    }
+})
+
 function startTimer() {
     timer = setInterval(updateTimer, 10, Date.now())
 }
@@ -21,5 +31,3 @@ function updateText(str) {
     if (str == '00000') document.querySelector('.digits').className = 'digits'
     if (str == '10000') document.querySelector('.digits').className = 'digits redDigit'
 }
-
-startTimer()
