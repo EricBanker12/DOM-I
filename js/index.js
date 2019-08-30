@@ -41,26 +41,25 @@ const siteContent = {
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 //nav
-let i = 1
-for (let link of document.querySelector('nav').children) {
-    link.innerText = siteContent['nav']['nav-item-'+i]
-    i++
-}
+Array.from(document.querySelector('nav').children).forEach((link, i)=>{
+    link.innerText = siteContent['nav'][`nav-item-${i+1}`]
+})
 //cta
 document.querySelector('.cta-text>h1').innerText = siteContent['cta']['h1']
 document.querySelector('.cta-text>button').innerText = siteContent['cta']['button']
 document.getElementById('cta-img').src = siteContent['cta']['img-src']
 //main-content
 let mainCont = document.querySelector('.main-content')
-i=0
 let categories = ['features','about','services','product','vision']
-for (let header of mainCont.getElementsByTagName('h4')) {
+Array.from(mainCont.getElementsByTagName('h4')).forEach((header, i)=>{
     header.innerText = siteContent['main-content'][`${categories[i]}-h4`]
-    i++
-}
-i=0
-for (let content of mainCont.getElementsByTagName('p')) {
+})
+Array.from(mainCont.getElementsByTagName('p')).forEach((content, i)=>{
     content.innerText = siteContent['main-content'][`${categories[i]}-content`]
-    i++
-}
+})
 document.getElementById('middle-img').src = siteContent['main-content']['middle-img-src']
+// contact
+categories = ['contact-h4','address','phone','email']
+Array.from(document.querySelector('.contact').children).forEach((child, i)=>{
+    child.innerText = siteContent['contact'][categories[i]]
+})
