@@ -9,7 +9,7 @@ document.addEventListener('click', function(event){
         }
         if (button.id == 'reset') {
             updateTimer(0)
-            updateText('00000')
+            updateText('----')
             document.getElementById('start').removeAttribute('disabled')
         }
     }
@@ -20,7 +20,7 @@ function startTimer() {
 }
 
 function updateTimer(time) {
-    let diff = Date.now() - time
+    let diff = Date.now() - time //must check time because setInterval timer is inaccurate.
     if (diff >= 10000) {
         clearInterval(timer)
         updateText('10000')
@@ -33,6 +33,6 @@ function updateText(str) {
         let temp = document.getElementById(id)
         temp.innerText = str[i]
     })
-    if (str == '00000') document.querySelector('.digits').className = 'digits'
+    if (str == '----') document.querySelector('.digits').className = 'digits'
     if (str == '10000') document.querySelector('.digits').className = 'digits redDigit'
 }
