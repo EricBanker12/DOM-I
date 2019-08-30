@@ -42,13 +42,26 @@ let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
 
 //nav
-Array.from(document.querySelector('nav').children).forEach((link, i)=>{
+let nav = document.querySelector('nav')
+Array.from(nav.children).forEach((link, i)=>{
     link.innerText = siteContent['nav'][`nav-item-${i+1}`]
+    link.style.color = 'green'
 })
+
+let temp1 = document.createElement('a')
+temp1.innerText = 'Hello'
+temp1.style.color = 'green'
+nav.prepend(temp1)
+
+let temp2 = document.createElement('a')
+temp2.innerText = 'World'
+temp2.style.color = 'green'
+nav.appendChild(temp2)
 
 //cta
 document.querySelector('.cta-text>h1').innerText = siteContent['cta']['h1']
-document.querySelector('.cta-text>button').innerText = siteContent['cta']['button']
+let button = document.querySelector('.cta-text>button')
+button.innerText = siteContent['cta']['button']
 document.getElementById('cta-img').src = siteContent['cta']['img-src']
 
 //main-content
@@ -70,3 +83,15 @@ Array.from(document.querySelector('.contact').children).forEach((child, i)=>{
 
 //footer
 document.querySelector('footer>p').innerText = siteContent['footer']['copyright']
+
+// stretch
+button.addEventListener('click', function() {
+    Array.from(document.querySelectorAll('*')).forEach(element => {
+        if (!['IMG','BUTTON'].includes(element.tagName)) {
+            element.style.color = 'white'
+            element.style.backgroundColor = 'black'
+        }
+    })
+    document.querySelector('h1').innerText = 'Dark Mode is Awesome'
+    logo.style.filter = 'invert(100%)'
+})
