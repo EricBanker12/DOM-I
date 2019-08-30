@@ -40,14 +40,17 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
 //nav
 Array.from(document.querySelector('nav').children).forEach((link, i)=>{
     link.innerText = siteContent['nav'][`nav-item-${i+1}`]
 })
+
 //cta
 document.querySelector('.cta-text>h1').innerText = siteContent['cta']['h1']
 document.querySelector('.cta-text>button').innerText = siteContent['cta']['button']
 document.getElementById('cta-img').src = siteContent['cta']['img-src']
+
 //main-content
 let mainCont = document.querySelector('.main-content')
 let categories = ['features','about','services','product','vision']
@@ -58,8 +61,12 @@ Array.from(mainCont.getElementsByTagName('p')).forEach((content, i)=>{
     content.innerText = siteContent['main-content'][`${categories[i]}-content`]
 })
 document.getElementById('middle-img').src = siteContent['main-content']['middle-img-src']
+
 // contact
 categories = ['contact-h4','address','phone','email']
 Array.from(document.querySelector('.contact').children).forEach((child, i)=>{
     child.innerText = siteContent['contact'][categories[i]]
 })
+
+//footer
+document.querySelector('footer>p').innerText = siteContent['footer']['copyright']
