@@ -7,6 +7,11 @@ document.addEventListener('click', function(event){
             startTimer()
             button.setAttribute('disabled','')
         }
+        if (button.id == 'reset') {
+            updateTimer(0)
+            updateText('00000')
+            document.getElementById('start').removeAttribute('disabled')
+        }
     }
 })
 
