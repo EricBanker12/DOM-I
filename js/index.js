@@ -40,3 +40,58 @@ const siteContent = {
 // Example: Update the img src for the logo
 let logo = document.getElementById("logo-img");
 logo.setAttribute('src', siteContent["nav"]["img-src"])
+
+//nav
+let nav = document.querySelector('nav')
+Array.from(nav.children).forEach((link, i)=>{
+    link.innerText = siteContent['nav'][`nav-item-${i+1}`]
+    link.style.color = 'green'
+})
+
+let temp1 = document.createElement('a')
+temp1.innerText = 'Hello'
+temp1.style.color = 'green'
+nav.prepend(temp1)
+
+let temp2 = document.createElement('a')
+temp2.innerText = 'World'
+temp2.style.color = 'green'
+nav.appendChild(temp2)
+
+//cta
+document.querySelector('.cta-text>h1').innerText = siteContent['cta']['h1']
+let button = document.querySelector('.cta-text>button')
+button.innerText = siteContent['cta']['button']
+document.getElementById('cta-img').src = siteContent['cta']['img-src']
+
+//main-content
+let mainCont = document.querySelector('.main-content')
+let categories = ['features','about','services','product','vision']
+Array.from(mainCont.getElementsByTagName('h4')).forEach((header, i)=>{
+    header.innerText = siteContent['main-content'][`${categories[i]}-h4`]
+})
+Array.from(mainCont.getElementsByTagName('p')).forEach((content, i)=>{
+    content.innerText = siteContent['main-content'][`${categories[i]}-content`]
+})
+document.getElementById('middle-img').src = siteContent['main-content']['middle-img-src']
+
+// contact
+categories = ['contact-h4','address','phone','email']
+Array.from(document.querySelector('.contact').children).forEach((child, i)=>{
+    child.innerText = siteContent['contact'][categories[i]]
+})
+
+//footer
+document.querySelector('footer>p').innerText = siteContent['footer']['copyright']
+
+// stretch
+button.addEventListener('click', function() {
+    Array.from(document.querySelectorAll('*')).forEach(element => {
+        if (!['IMG','BUTTON'].includes(element.tagName)) {
+            element.style.color = 'white'
+            element.style.backgroundColor = 'black'
+        }
+    })
+    document.querySelector('h1').innerText = 'Dark Mode is Awesome'
+    logo.style.filter = 'invert(100%)'
+})

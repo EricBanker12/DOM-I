@@ -2,13 +2,39 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
-.digit {
+.digit, h1 {
   display: inline-block;
   font-size: 80px;
 }
 
 .redDigit {
   color: red;
+}
+
+.digits {
+    width: 300px;
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+    width: 100%;
+}
+
+button {
+    cursor: pointer;
+    padding: 0 2ch;
+    font-size: 40px;
+    line-height: 80px;
+    background: black;
+    color: white;
+    /* margin: 0 2ch; */
+}
+
+button:disabled {
+    cursor: unset;
+    background: gray;
 }
